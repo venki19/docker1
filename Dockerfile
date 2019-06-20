@@ -1,3 +1,6 @@
-FROM ubuntu:latest
-RUN apt-get update
-RUN apt-get install -y docker.io
+FROM centos
+RUN yum install httpd -y
+COPY index.html /var/www/html/
+
+CMD [“/usr/sbin/httpd”,” -D”,” FOREGROUND”]
+EXPOSE 80
